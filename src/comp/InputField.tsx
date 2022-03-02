@@ -7,7 +7,7 @@ interface TextBoxProps {
     handleAdd: (event: React.FormEvent) => void;
 }
 
-const inputField: React.FC<TextBoxProps> = ({ todo, setTodo, handleAdd }: TextBoxProps ) => {
+const InputField: React.FC<TextBoxProps> = ({ todo, setTodo, handleAdd }: TextBoxProps ) => {
     return(
         <form className='inputForm' onSubmit={handleAdd}>
             <input type="text" 
@@ -20,4 +20,4 @@ const inputField: React.FC<TextBoxProps> = ({ todo, setTodo, handleAdd }: TextBo
 };
 
 
-export default inputField
+export default InputField

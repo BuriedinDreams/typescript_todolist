@@ -8,13 +8,21 @@ import { TodoItem } from './comp/model';
 const App: React.FC = () => {
   
   const [info, setInfo] = useState<string>("")
-  const [todo, setTodo] = useState<TodoItem[]>([])
+  const [todos, setTodos] = useState<TodoItem[]>([]);
 
   const handleAdd = (event: React.FormEvent) => {
     event.preventDefault();
-  }
+  
+    if (info) {
+      setTodos([...todos, { id:Date.now(), item: info, completed: false }])
+      setInfo('');
+    } 
+    
+  };
   
   console.log(info);
+  console.log(todos);
+  
   
 
   return (

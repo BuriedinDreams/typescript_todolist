@@ -1,6 +1,6 @@
 .inputForm {
   display: flex;
-  width: 50%;
+  width: 35%;
   position: relative;
   align-items: center;
 }
@@ -56,4 +56,43 @@
   justify-content: space-evenly;
   width: 90%;
   flex-wrap: wrap;
+}
+
+.singleTodo {
+  display: flex;
+  width: 20%;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 30px;
+  background-color: forestgreen;
+  /* background-image: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F30000%2Fvelka%2Forange-textile-background.jpg&f=1&nofb=1); */
+}
+
+.singleTodoText {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+}
+
+.singleTodoText:focus {
+  outline: none;
+}
+
+.edit {
+  margin-left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.completed {
+  margin-left: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.delete {
+  margin-left: 15px;
+  font-size: 25px;
+  cursor: pointer;
 }

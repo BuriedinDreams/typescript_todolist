@@ -2,6 +2,7 @@ import React from 'react';
 import { TodoItem } from './model';
 import { AiFillEdit, AiTwotoneDelete  } from 'react-icons/ai'
 import { GoCheck } from 'react-icons/go'
+import './styles.css'
 
 
 type Props = {
@@ -14,8 +15,8 @@ type Props = {
 
 const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) => {
     return (
-        <form className='SingleTodo' >
-            <span className='SingleTodoText'>{todoItems.item}</span>
+        <form className='singleTodo' >
+            <span className='singleTodoText'>{todoItems.item}</span>
             
             <div>
                 <span className='edit' >
@@ -26,7 +27,7 @@ const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) =>
                     <GoCheck/>
                 </span>
 
-                <span className='Delete' >
+                <span className='delete' >
                 <AiTwotoneDelete/>
                 </span>
             </div>

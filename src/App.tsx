@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import InputField from './comp/InputField'
 import { TodoItem } from './comp/model';
+import ToDoList from './comp/TodoList';
 
 
 
@@ -28,11 +29,9 @@ const App: React.FC = () => {
   return (
     <div className='App'>
       <span className='heading'>Reminder App</span>
-      <InputField todo= {info} setTodo={setInfo} handleAdd={handleAdd} />
-      {/* <ToDoList */}
-      {todos.map((createdItems) => (
-        <li>{createdItems.item}</li>
-      ))}
+      <InputField todo={info} setTodo={setInfo} handleAdd={handleAdd} />
+      <ToDoList todos={todos} setTodos={setTodos} />
+      
 
     </div>
   );

@@ -29,6 +29,10 @@ const App: React.FC = () => {
     <div className='App'>
       <span className='heading'>Reminder App</span>
       <InputField todo= {info} setTodo={setInfo} handleAdd={handleAdd} />
+      {/* <ToDoList */}
+      {todos.map((createdItems) => (
+        <li>{createdItems.item}</li>
+      ))}
 
     </div>
   );

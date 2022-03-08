@@ -5,12 +5,6 @@
   align-items: center;
 }
 
-@media (max-width: 1200px) {
-  .inputForm {
-    width: 40%;
-  }
-}
-
 .inputTextBox {
   /* align-items: center; */
   width: 100%;
@@ -79,20 +73,30 @@
   outline: none;
 }
 
-.edit {
+.icon {
   margin-left: 15px;
   font-size: 25px;
   cursor: pointer;
 }
 
-.completed {
-  margin-left: 15px;
-  font-size: 25px;
-  cursor: pointer;
+/* This is for the form as a whole. */
+@media (max-width: 1200px) {
+  .inputForm {
+    width: 40%;
+  }
 }
 
-.delete {
-  margin-left: 15px;
-  font-size: 25px;
-  cursor: pointer;
+/* This is for the task box */
+@media (max-width: 1000px) {
+  .inputForm {
+    width: 70%;
+  }
+
+  .singleTodo {
+    width: 70%;
+  }
+
+  .singleTodoText {
+    width: 70%;
+  }
 }

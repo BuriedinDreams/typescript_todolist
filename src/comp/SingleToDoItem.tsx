@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { TodoItem } from './model';
 import { AiFillEdit, AiTwotoneDelete  } from 'react-icons/ai'
 import { GoCheck } from 'react-icons/go'
 import './styles.css'
+import { useEffect } from 'react';
 
 
 type Props = {
@@ -18,7 +19,7 @@ const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) =>
         // this one is going to keep track if the edit mode is on OR off.
     const [edit, setEdit] = useState<boolean>(false);
         // this one is going to keep the value of the item
-    const []
+    const [edited, setEdited] = useState<string>(todoItems.item);
 
 
     // This is going to compare the users clicked id to the array 
@@ -27,11 +28,6 @@ const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) =>
         setTodos(todos.map((todos) => todoItems.id === id ? {...todoItems, completed: !todos.completed}: todoItems))
     };
 
-    const handleEdit = (id: number) => {
-        setTodos
-    }
-
-
 
     // This function is going to filter out the id of which the user clicked and delete it from the app.
     // this function is going to use filter() and take away the id of which the user clicks.
@@ -39,11 +35,31 @@ const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) =>
         setTodos(todos.filter((todoItems) => todoItems.id !== id ));
     };
 
+    const handleEdit = (event:React.FormEvent, id:number) => {
+        event.preventDefault();
+
+        setTodos(
+            todos.map((todoItems) => (
+            todoItems.id === id ? {...todoItems, todoItems: edited } : todoItems))
+            );
+            setEdit(false);
+    }
+
+    const inputRef = useRef<HTMLInputElement>(null);
+   
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [setEdited]);
+
 
     return (
-        <form className='singleTodo' >
+        <form className='singleTodo' onSubmit={(event)=>handleEdit(event, todoItems.id)} >
 
-            {todoItems.completed ? (
+            { edit? (
+                <input
+                ref={inputRef}
+                 value={edited} onChange={(event) => setEdited(event.target.value)} className='editInputBox' />
+                ) : todoItems.completed ? (
                 <s className='singleTodoText'>{todoItems.item}</s>
             ) : (
                 <span className='singleTodoText'>{todoItems.item}</span>
@@ -55,7 +71,13 @@ const SingleToDoItem: React.FC<Props> = ({todoItems, todos, setTodos}: Props) =>
                     <GoCheck/>
                 </span>
 
-                <span className='icon' onClick={() => handleEdit(todoItems.id)} >
+                <span className='icon' 
+                onClick={ () => {
+                    if(!edit && !todoItems.completed) {
+                        setEdit(!edit);
+                    }
+                    }}
+                >
                     <AiFillEdit/>
                 </span>
 
